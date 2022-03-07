@@ -1,0 +1,8 @@
+_build/
+.elixir_ls/
+assets/vendor/
+deps/
+priv/static/assets/app.js
+**/node_modules/
+**/*.min.js
+package.json
