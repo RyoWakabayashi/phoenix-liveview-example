@@ -1,0 +1,26 @@
+{
+  "name": "phoenix-liveview-example",
+  "version": "1.0.0",
+  "description": "This project will be the client repository for the rise auction",
+  "repository": "git@github.com:RyoWakabayashi/phoenix-liveview-example.git",
+  "author": "Ryo Wakabayashi <gfdmkm573@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": { },
+  "scripts": {
+    "prepare": "bash -c \"cp ./git_hooks/commit-msg ./.git/hooks/\"",
+    "eslint": "eslint --ext .js .",
+    "eslint-fix": "eslint --ext .js --fix .",
+    "stylelint": "stylelint \"assets/**/*.css\"",
+    "stylelint-fix": "stylelint \"assets/**/*.css\" --fix"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "stylelint": "^14.5.3",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-standard": "^25.0.0"
+  }
+}
