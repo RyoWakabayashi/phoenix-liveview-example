@@ -25,6 +25,7 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_ANSIBLE: false
           DEFAULT_BRANCH: main
+          FILTER_REGEX_EXCLUDE: assets\/css\/phoenix\.css
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   lint-others:
     runs-on: ubuntu-18.04
