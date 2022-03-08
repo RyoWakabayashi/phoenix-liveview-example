@@ -17,6 +17,12 @@ defmodule LiveViewExampleWeb.Router do
   scope "/", LiveViewExampleWeb do
     pipe_through :browser
 
+    live("/", GaugeLive)
+  end
+
+  scope "/counter", LiveViewExampleWeb do
+    pipe_through :browser
+
     live("/", Counter)
   end
 

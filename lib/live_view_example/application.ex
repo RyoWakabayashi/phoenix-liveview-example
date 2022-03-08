@@ -9,6 +9,7 @@ defmodule LiveViewExample.Application do
   def start(_type, _args) do
     children = [
       LiveViewExample.Count,
+      LiveViewExample.Gauge,
       # Start the Telemetry supervisor
       LiveViewExampleWeb.Telemetry,
       # Start the PubSub system
