@@ -3,10 +3,9 @@ defmodule LiveViewExampleWeb.Counter do
   カウンターのフロントエンド処理を定義する
   """
 
-  use Phoenix.LiveView
+  use LiveViewExampleWeb, :live_view
   alias LiveViewExample.Count
   alias LiveViewExample.Presence
-  alias LiveViewExampleWeb.CounterView
   alias Phoenix.PubSub
 
   @topic Count.topic()
@@ -16,21 +15,22 @@ defmodule LiveViewExampleWeb.Counter do
     PubSub.subscribe(LiveViewExample.PubSub, @topic)
 
     Presence.track(self(), @presence_topic, socket.id, %{})
-    LiveViewExampleWeb.Endpoint.subscribe(@presence_topic)
 
     initial_present =
       Presence.list(@presence_topic)
       |> map_size
 
+    LiveViewExampleWeb.Endpoint.subscribe(@presence_topic)
+
     {:ok, assign(socket, val: Count.current(), present: initial_present)}
   end
 
   def handle_event("inc", _, socket) do
-    {:noreply, assign(socket, :val, Count.incr())}
+    {:noreply, assign(socket, val: Count.incr())}
   end
 
   def handle_event("dec", _, socket) do
-    {:noreply, assign(socket, :val, Count.decr())}
+    {:noreply, assign(socket, val: Count.decr())}
   end
 
   def handle_info({:count, count}, socket) do
@@ -47,6 +47,17 @@ defmodule LiveViewExampleWeb.Counter do
   end
 
   def render(assigns) do
-    CounterView.render("index.html", assigns)
+    ~H"""
+    <div>
+    <h1 class="text-4xl font-bold text-center"> The count is: <%= @val %> </h1>
+
+    <p class="text-center">
+     <.button phx-click="dec">-</.button>
+     <.button phx-click="inc">+</.button>
+     </p>
+
+     <h1 class="text-4xl font-bold text-center"> Current users: <%= @present %></h1>
+     </div>
+    """
   end
 end

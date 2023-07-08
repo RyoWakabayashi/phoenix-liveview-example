@@ -19,15 +19,15 @@ defmodule LiveViewExampleWeb.ConnCase do
 
   using do
     quote do
+      # The default endpoint for testing
+      @endpoint LiveViewExampleWeb.Endpoint
+
+      use LiveViewExampleWeb, :verified_routes
+
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
       import LiveViewExampleWeb.ConnCase
-
-      alias LiveViewExampleWeb.Router.Helpers, as: Routes
-
-      # The default endpoint for testing
-      @endpoint LiveViewExampleWeb.Endpoint
     end
   end
 

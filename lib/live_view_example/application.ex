@@ -15,6 +15,8 @@ defmodule LiveViewExample.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: LiveViewExample.PubSub},
       LiveViewExample.Presence,
+      # Start Finch
+      {Finch, name: LiveViewExample.Finch},
       # Start the Endpoint (http/https)
       LiveViewExampleWeb.Endpoint
       # Start a worker by calling: LiveViewExample.Worker.start_link(arg)

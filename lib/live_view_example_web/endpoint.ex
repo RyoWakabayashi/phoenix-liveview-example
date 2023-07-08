@@ -7,7 +7,8 @@ defmodule LiveViewExampleWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_live_view_example_key",
-    signing_salt: "7WXLLcth"
+    signing_salt: "do6IbgrU",
+    same_site: "Lax"
   ]
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
@@ -20,7 +21,7 @@ defmodule LiveViewExampleWeb.Endpoint do
     at: "/",
     from: :live_view_example,
     gzip: false,
-    only: ~w(assets fonts images favicon.ico robots.txt)
+    only: LiveViewExampleWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

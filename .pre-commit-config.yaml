@@ -24,27 +24,27 @@ repos:
         files: \.exs*$
 
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.26.3
+    rev: v1.32.0
     hooks:
       - id: yamllint
         files: \.(yaml|yml)$
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.31.1
+    rev: v0.35.0
     hooks:
       - id: markdownlint
         entry: markdownlint
         language: node
         types: [markdown]
-        minimum_pre_commit_version: 0.15.0
+        exclude: ".*/vendor/.*"
 
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v7.32.0
+    rev: v8.44.0
     hooks:
       - id: eslint
         additional_dependencies:
-          - eslint@7.32.0
-          - eslint-config-standard@16.0.3
+          - eslint@8.44.0
+          - eslint-config-standard@17.1.0
         files: \.(js)$
 
   - repo: https://github.com/awebdeveloper/pre-commit-stylelint
@@ -52,11 +52,11 @@ repos:
     hooks:
       - id: stylelint
         additional_dependencies:
-          - 'stylelint@14.5.3'
+          - 'stylelint@15.10.1'
         files: \.(css)$
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v4.4.0
     hooks:
       - id: check-added-large-files
       - id: check-json

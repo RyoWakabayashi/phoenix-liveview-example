@@ -3,9 +3,8 @@ defmodule LiveViewExampleWeb.GaugeLive do
   ゲージのフロントエンド処理を定義する
   """
 
-  use Phoenix.LiveView
+  use LiveViewExampleWeb, :live_view
   alias LiveViewExample.Gauge
-  alias LiveViewExampleWeb.GaugeView
   alias Phoenix.PubSub
 
   @topic Gauge.topic()
@@ -46,17 +45,32 @@ defmodule LiveViewExampleWeb.GaugeLive do
   def class_name(index, num_blocks) do
     cond do
       index > num_blocks ->
-        "gauge-block none"
+        "w-[100px] h-[3px] mb-[1px] invisible"
 
       index >= 80 ->
-        "gauge-block high"
+        "w-[100px] h-[3px] mb-[1px] bg-[#f00]"
 
       true ->
-        "gauge-block"
+        "w-[100px] h-[3px] mb-[1px] bg-[#0f0]"
     end
   end
 
   def render(assigns) do
-    GaugeView.render("index.html", assigns)
+    ~H"""
+    <div class="flex justify-center w-full h-[500px]">
+      <div class="flex items-center justify-between w-52">
+        <div class="w-16 text-3xl font-medium text-right">
+          <%= @num_blocks %>
+        </div>
+        <div class="w-[100px] h-[400px]">
+          <%= for block <- @blocks do %>
+            <%= live_component LiveViewExampleWeb.GaugeBlock,
+              id: block.id,
+              class_name: block.class_name %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    """
   end
 end

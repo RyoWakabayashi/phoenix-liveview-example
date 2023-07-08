@@ -25,10 +25,7 @@ mix phx.server
 Install asdf plugins
 
 ```bash
-asdf plugin-add elixir \
-  ; asdf plugin-add erlang \
-  ; asdf plugin-add nodejs \
-  ; asdf plugin-add python
+awk '{system("asdf plugin-add " $1)}' .tool-versions
 ```
 
 Install languages
