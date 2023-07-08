@@ -10,7 +10,7 @@ defmodule LiveViewExample.Count do
 
   @start_value 0
 
-  # -------  External API (runs in client process) -------
+  # ------------ External API (runs in client process) ---------
 
   def topic do
     "count"
@@ -36,7 +36,7 @@ defmodule LiveViewExample.Count do
     {:ok, start_count}
   end
 
-  # -------  Implementation  (Runs in GenServer process) -------
+  # --------- Implementation (runs in GenServer process) ----------start_count
 
   def handle_call(:current, _from, count) do
     {:reply, count, count}
